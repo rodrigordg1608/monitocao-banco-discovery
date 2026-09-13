@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Git
+*.orig
+
+# Logs
+*.log
