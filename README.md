@@ -178,3 +178,7 @@ Esse formato é útil para orientar geração de código, revisão de arquitetur
 - detalhar os requisitos de segurança e privacidade;
 - registrar decisões arquiteturais em ADRs;
 - transformar a base em contexto para agentes com prompts e metas mais estruturadas.
+
+## 8) Testes de integração
+
+O registro de prompts, premissas e casos gerados para a discussão sobre testes de integração está em [TESTES-INTEGRACAO.md](TESTES-INTEGRACAO.md).
