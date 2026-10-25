@@ -84,3 +84,4 @@ O prompt de falhas ampliou a cobertura para indisponibilidade e inconsistência 
 - incluir premissas provisórias do contrato e orientar a LLM a sinalizar lacunas em vez de inventar status, retries ou garantias;
 - revisar manualmente termos ambíguos como “idempotência” e “sucesso” antes de transformar os exemplos em automação.
 
+#
