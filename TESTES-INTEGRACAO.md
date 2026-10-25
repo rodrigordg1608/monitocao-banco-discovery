@@ -84,14 +84,3 @@ O prompt de falhas ampliou a cobertura para indisponibilidade e inconsistência 
 - incluir premissas provisórias do contrato e orientar a LLM a sinalizar lacunas em vez de inventar status, retries ou garantias;
 - revisar manualmente termos ambíguos como “idempotência” e “sucesso” antes de transformar os exemplos em automação.
 
-## Limitações e próximos passos
-
-Os casos são uma proposta de discovery e não substituem um contrato aprovado nem a execução em uma aplicação existente. Para automatizá-los, ainda são necessários: OpenAPI, esquema dos eventos do provedor, estados e transições do job, política de retries e idempotência, regras de alerta, garantias transacionais, estratégia de fila e critérios para reprocessamento. Os testes devem usar banco isolado por execução e limpar seus dados ao final.
-
-## Texto pronto para a postagem
-
-Use este resumo no fórum junto com o link do repositório:
-
-> Escolhi a jornada de sincronização de movimentações do sistema de monitoramento bancário. Usei dois tipos de prompt: um para gerar cenários funcionais cobrindo a integração entre API, worker, provedor e notificador; outro para explorar falhas, contratos e consistência entre componentes. O primeiro trouxe casos de sucesso, ausência de alerta, duplicidade e conta inválida. O segundo ampliou a cobertura para timeout, payload inválido e indisponibilidade do banco e do notificador.
->
-> A especificação de componentes e o pedido de preparação, ação e verificações deixaram os casos mais úteis. Ajustei os prompts para exigir dados sintéticos, separar teste de integração de teste unitário e pedir que lacunas fossem marcadas em vez de preenchidas por suposição. O principal limite é que ainda faltam decisões formais sobre status HTTP, retries, idempotência e recuperação de falhas; por isso, registrei essas premissas como provisórias no repositório.
