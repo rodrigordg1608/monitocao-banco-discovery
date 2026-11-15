@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">Falha de teste e correção do laboratório</title>
+  <desc id="description">Evidência visual do cenário: o teste falha ao subtrair float e string; a correção converte o limite mínimo para float.</desc>
+  <rect width="1200" height="760" fill="#0d1117"/>
+  <rect x="40" y="35" width="1120" height="64" rx="10" fill="#161b22" stroke="#30363d"/>
+  <circle cx="76" cy="67" r="10" fill="#ff5f56"/><circle cx="108" cy="67" r="10" fill="#ffbd2e"/><circle cx="140" cy="67" r="10" fill="#27c93f"/>
+  <text x="180" y="75" fill="#c9d1d9" font-family="Consolas, monospace" font-size="24">Terminal — laboratório DevOps com GenAI</text>
+  <text x="65" y="148" fill="#58a6ff" font-family="Consolas, monospace" font-size="26" font-weight="bold">1. Teste automatizado: falha identificada</text>
+  <rect x="60" y="170" width="1080" height="220" rx="8" fill="#161b22" stroke="#f85149"/>
+  <text x="90" y="215" fill="#8b949e" font-family="Consolas, monospace" font-size="22">$ pytest -q</text>
+  <text x="90" y="258" fill="#f85149" font-family="Consolas, monospace" font-size="22">FAILED test_app.py::test_calculates_difference_from_configured_limit</text>
+  <text x="90" y="301" fill="#c9d1d9" font-family="Consolas, monospace" font-size="22">TypeError: unsupported operand type(s) for -: 'float' and 'str'</text>
+  <text x="90" y="344" fill="#f85149" font-family="Consolas, monospace" font-size="22">1 failed in 0.08s</text>
+  <text x="65" y="455" fill="#3fb950" font-family="Consolas, monospace" font-size="26" font-weight="bold">2. Correção recomendada após análise do log</text>
+  <rect x="60" y="478" width="1080" height="210" rx="8" fill="#161b22" stroke="#3fb950"/>
+  <text x="90" y="525" fill="#8b949e" font-family="Consolas, monospace" font-size="21"># app.py</text>
+  <text x="90" y="568" fill="#ff7b72" font-family="Consolas, monospace" font-size="22">- return balance - minimum_balance</text>
+  <text x="90" y="612" fill="#7ee787" font-family="Consolas, monospace" font-size="22">+ return float(balance) - float(minimum_balance)</text>
+  <text x="90" y="655" fill="#c9d1d9" font-family="Consolas, monospace" font-size="22">$ pytest -q  →  1 passed</text>
+  <text x="60" y="730" fill="#8b949e" font-family="Arial, sans-serif" font-size="17">Cenário didático do projeto: validar a correção antes de aplicá-la ao código.</text>
+</svg>

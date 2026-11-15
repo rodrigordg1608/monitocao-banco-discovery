@@ -51,9 +51,11 @@ A causa é a operação entre `float` e `str` em `calculate_alert_threshold`. A 
 
 Uma IA generativa pode acelerar a leitura do log e sugerir essa hipótese, mas a recomendação precisa ser revisada e testada. Logs devem ser saneados antes de serem enviados a qualquer serviço externo.
 
-## Evidência para o fórum
+## Cenário de teste e correção
 
-Após executar o pipeline no GitLab, inclua na postagem uma captura ou trecho do job `unit_tests` contendo o `TypeError` e, se aplicável, a saída de `genai_diagnosis`. Não publique tokens, URLs privadas ou dados reais.
+![Falha do teste e correção recomendada](evidencias/testes-e-correcao.svg)
+
+A imagem apresenta o erro intencional do teste e a correção recomendada. Após aplicar a conversão para `float`, o teste deve ser executado novamente para validar o resultado.
 
 ---
 
