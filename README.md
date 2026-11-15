@@ -1,4 +1,63 @@
-# Monitoração Bancária — Base de Documentation Discovery
+# Miniprojeto DevOps com GenAI: monitoração bancária
+
+Projeto acadêmico para demonstrar um pipeline de CI/CD no GitLab, testes automatizados e o uso responsável de IA generativa no diagnóstico de uma falha.
+
+> O repositório usa somente dados fictícios e não contém credenciais, chaves de API ou dados bancários reais.
+
+## Objetivo
+
+Uma API Python/Flask simula a verificação de saldo mínimo. O teste automatizado contém uma falha de tipo proposital: o saldo é numérico, mas o limite mínimo é recebido como texto. O pipeline executa o teste e, quando ele falha, roda um job de diagnóstico que registra a causa provável e a correção a validar.
+
+## Estrutura do laboratório
+
+| Arquivo | Finalidade |
+| --- | --- |
+| `app.py` | API e regra de cálculo do limite de saldo |
+| `test_app.py` | Teste automatizado com falha intencional |
+| `.gitlab-ci.yml` | Pipeline com estágios de teste e análise |
+| `genai_analyst.py` | Diagnóstico orientativo para a falha do laboratório |
+| `TESTES-INTEGRACAO.md` | Casos e reflexão sobre testes de integração com GenAI |
+
+## Como executar localmente
+
+```bash
+python -m venv .venv
+# Linux/macOS
+source .venv/bin/activate
+# Windows PowerShell
+.venv\\Scripts\\Activate.ps1
+pip install -r requirements.txt
+pytest -q
+```
+
+O resultado esperado antes da correção é uma falha semelhante a:
+
+```text
+TypeError: unsupported operand type(s) for -: 'float' and 'str'
+```
+
+## Pipeline
+
+O arquivo `.gitlab-ci.yml` utiliza a imagem `python:3.12-slim` e possui dois estágios:
+
+1. `unit_tests`: instala as dependências e executa `pytest -q`.
+2. `genai_diagnosis`: executa somente após falha e apresenta o diagnóstico orientativo.
+
+Para publicar no GitLab, crie um projeto **público** vazio e envie esta branch. O GitLab detectará automaticamente `.gitlab-ci.yml` e criará o pipeline.
+
+## Diagnóstico e correção esperada
+
+A causa é a operação entre `float` e `str` em `calculate_alert_threshold`. A correção deve converter e validar o limite mínimo antes da subtração. Após alterar o código, execute novamente `pytest -q` e verifique se o pipeline fica verde.
+
+Uma IA generativa pode acelerar a leitura do log e sugerir essa hipótese, mas a recomendação precisa ser revisada e testada. Logs devem ser saneados antes de serem enviados a qualquer serviço externo.
+
+## Evidência para o fórum
+
+Após executar o pipeline no GitLab, inclua na postagem uma captura ou trecho do job `unit_tests` contendo o `TypeError` e, se aplicável, a saída de `genai_diagnosis`. Não publique tokens, URLs privadas ou dados reais.
+
+---
+
+# Documentação complementar: monitoração bancária
 
 ## 1) Contexto do sistema
 

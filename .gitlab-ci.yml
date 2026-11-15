@@ -1,0 +1,23 @@
+image: python:3.12-slim
+
+stages:
+  - test
+  - analysis
+
+cache:
+  paths:
+    - .pip-cache/
+
+before_script:
+  - pip install --cache-dir .pip-cache -r requirements.txt
+
+unit_tests:
+  stage: test
+  script:
+    - pytest -q
+
+genai_diagnosis:
+  stage: analysis
+  when: on_failure
+  script:
+    - python genai_analyst.py
